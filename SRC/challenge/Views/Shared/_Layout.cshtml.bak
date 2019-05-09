@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Qaudribol</title>
+	<link type="text/css" href="~/Content/CSS/jquery-ui.min.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+	@Scripts.Render( "~/bundles/jquery" )
+	@Scripts.Render( "~/bundles/bootstrap" )
+	@Scripts.Render( "~/bundles/bootstrap" )
+	@*@Scripts.Render( "~/bundles/jqueryui" )*@
+
+	<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+	<script type="text/javascript">
+
+		$( function ()
+		{
+			// Global
+			//$.Portal_RAIZ = '@Url.Content("~")';
+			$.ROOT = '@Url.Content("~")';
+
+			//ajaxInit( $ );
+
+			//var imgLoading = $.ROOT + "Content/web/img/ajax-loader.gif";
+
+			//$("div#div-ajax-loading").css("background", "url('" + imgLoading + "') center center no-repeat");
+
+			$("#dialogo")
+				.unbind("click")
+				.click(function (ev)
+			{
+				if ( ev )
+					ev.preventDefault();
+
+				$("<div></div>").html("teste").dialog(
+				{
+					title: 'Quadribol',
+					modal: true,
+					resizable: false,
+					buttons:
+					{
+						"Fechar": function () {
+							$(this).dialog("close");
+						}
+					}
+				})
+				return false;
+			});
+		} );
+	</script>
+	
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Desafio de Quadribol", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink( "Home", "Index", "Home" )</li>
+                    <li>@Html.ActionLink( "Times Participantes", "Index", "Teams" )</li>
+                    <li>@Html.ActionLink( "Ao Jogo", "Index", "Match" )</li>
+					<li><a href="#" id="dialogo">dialogo</a>dialogo</li>
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+		<div id="div-ajax-loading" style="width: 100%; height: 90%; display: none;	padding: 0;"></div>
+		@RenderSection( "scripts", required: false )
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Anderson Milanez dos Santos</p>
+        </footer>
+    </div>
+</body>
+</html>

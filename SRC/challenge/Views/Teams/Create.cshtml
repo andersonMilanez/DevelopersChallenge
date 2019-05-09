@@ -1,0 +1,42 @@
+﻿@using challenge.Models.Data;
+
+@model Team
+
+@{
+    ViewBag.Title = "Novo Time";
+}
+
+<h2>Times</h2>
+
+
+@using ( Html.BeginForm() )
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <hr />
+        @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+        <div class="form-group">
+            <label for="input-name" class="control-label col-md-2" >Nome</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="input-name" name="Name" type="text" value="">
+                @Html.ValidationMessageFor( model => model.Name, "", new { @class = "text-danger" } )
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "Teams" )" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>&nbsp;Voltar </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render( "~/bundles/jqueryval" )
+}

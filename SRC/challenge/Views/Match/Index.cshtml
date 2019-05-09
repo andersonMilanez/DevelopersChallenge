@@ -1,0 +1,30 @@
+﻿@using challenge.Models.Data;
+
+@model IEnumerable<Match>
+
+@{
+    ViewBag.Title = "Quadribol";
+
+    IList< Team > arrTeams = ( IList< Team > )ViewBag.arrTeams;
+}
+
+@*<h2>Index</h2>*@
+<h4>Times disponíveis</h4>
+<ul class="nav nav-pills" role="tablist">
+    @foreach ( Team team in arrTeams )
+    {
+        <li role="presentation"><span role="tab" data-toggle="pill" id="span-li-teams"> @team.Name </span></li>
+    }
+</ul>
+
+<p>
+    <a id="btn-sortear-times" class="btn btn-default btn-lg" role="button" title="Sortear Times">
+        Sortear times &nbsp;<span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+    </a>
+</p>
+<script src="~/Scripts/challenge/sortTeams.js"></script>
+<script src="~/Scripts/challenge/match.js"></script>
+<script src="~/Scripts/challenge/playSemiFinal.js"></script>
+<script src="~/Scripts/challenge/playFinal.js"></script>
+<div class="row" id="battle-field">
+</div>

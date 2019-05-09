@@ -1,0 +1,23 @@
+﻿@using challenge.Models.Data;
+
+@model Team
+
+@{
+    ViewBag.Title = "Deletar time";
+}
+
+<h3>Confirma a exclusão do time @Model.Name?</h3>
+<div>
+    @using ( Html.BeginForm() )
+    {
+
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <br />
+        <hr />
+        <a href="@Url.Action("Index", "Teams" )" class="btn btn-default btn-sm">Não</a>
+        | <input type="submit" value="Sim" class="btn btn-defaultc btn-primary" />
+    </div>
+    }
+</div>

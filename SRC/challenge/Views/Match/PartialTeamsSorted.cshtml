@@ -1,0 +1,113 @@
+﻿@using challenge.Models.Data;
+
+@model IEnumerable<Team>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<fieldset style="padding-top:20px;">
+                <spam style="font-size:30px;margin-top: 20px;margin-bottom: 10px;">Este são os confrontos:</spam>
+				<div class="row">
+					<div class="col-md-6">
+						<fieldset style="padding-top:10px;">
+							<form id="form-semifinal-match1" action="@Url.Action("PlayMatchCheckWinner", "Match")" method="post">
+								<input type="hidden" id="input-id-team-home" name="IdTeamHome" value="@Model.ElementAt( 0 ).Id"/>
+								<input type="hidden" id="input-id-team-visitor" name="IdTeamVisitor" value="@Model.ElementAt( 1 ).Id" />
+							</form>
+							<div class="row">
+								<div class="col-md-4 team-match"> @Model.ElementAt( 0 ).Name</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-home-semifinal-1">0</fieldset> </div>
+								<div class="col-md-1">
+									<img src="~/Content/img/versus.jpg" style="margin-left: 7px;"/>
+								</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-visitor-semifinal-1">0</fieldset> </div>
+								<div class="col-md-4 team-match"> @Model.ElementAt( 1 ).Name</div>
+							</div>
+							<div class="row">
+								<br />
+								<div class="col-md-12 play-match">
+									<a id="a-match-1" onclick="playMatch();" class="btn btn-default btn-success">Jogar</a>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+
+
+					<div class="col-md-6">
+						<fieldset style="padding-top:10px;">
+							<form id="form-semifinal-match2" action="@Url.Action("PlayMatchCheckWinner", "Match")" method="post">
+								<input type="hidden" id="input-id-team-home" name="IdTeamHome" value="@Model.ElementAt( 2 ).Id" />
+								<input type="hidden" id="input-id-team-visitor" name="IdTeamVisitor" value="@Model.ElementAt( 3 ).Id" />
+							</form>
+							<div class="row">
+								<div class="col-md-4 team-match"> @Model.ElementAt( 2 ).Name</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-home-semifinal-2">0</fieldset> </div>
+								<div class="col-md-1">
+									<img src="~/Content/img/versus.jpg" />
+								</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-visitor-semifinal-2">0</fieldset> </div>
+								<div class="col-md-4 team-match"> @Model.ElementAt( 3 ).Name</div>
+							</div>
+							<div class="row">
+								<br />
+								<div class="col-md-12 play-match">
+									<a href="#" id="a-match-2" onclick="playMatch();" class="btn btn-default btn-success">Jogar</a>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<br />
+				<br />
+
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<fieldset style="padding-top:10px;">
+							<form id="form-final-match" action="@Url.Action("PlayMatchCheckWinner", "Match")" method="post">
+								<input type="hidden" id="input-id-team-home" name="IdTeamHome" value="" />
+								<input type="hidden" id="input-id-team-visitor" name="IdTeamVisitor" value="" />
+							</form>
+							<div class="row">
+								<div class="col-md-4 team-match" id="div-winner-semifinal-1"> Vencedor Chave 1</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-final-home">0</fieldset> </div>
+								<div class="col-md-1">
+									<img src="~/Content/img/versus.jpg" />
+								</div>
+								<div class="col-md-1"> <fieldset id="fieldset-score-final-visitor">0</fieldset> </div>
+								<div class="col-md-4 team-match" id="div-winner-semifinal-2"> Vencedor Chave 2</div>
+							</div>
+							<div class="row">
+								<br />
+								<div class="col-md-12 play-match">
+									<a href="#" id="a-final-match" onclick="playFinal();" class="btn btn-default btn-success disabled">Jogar</a>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<br />
+				<br />
+
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<fieldset style="padding-top:20px; padding-bottom:20px;">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3" style="text-align:center;font-size: 22px;">
+									<span>Campeão&nbsp;&nbsp;</span><i class="fas fa-trophy"></i>
+								</div>
+							</div>
+							<br />
+							<fieldset>
+								<div class="row">
+									<div class="col-md-12 team-match" id="div-champion-team">&nbsp;</div>
+								</div>
+							</fieldset>
+						</fieldset>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
